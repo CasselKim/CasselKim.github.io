@@ -25,5 +25,4 @@
 
 ### 3. Wireframe
 
-![image](readmeimg/01.png)  
-
+![image](READMEimg/01.png)  
