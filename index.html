@@ -21,18 +21,17 @@
 			position: absolute;
 			top: 50%;
 			left: 50%;
-			font-size: 50px;
 			color: white;
 			transform: translate(-50%,-50%);
 			-ms-transform: translate(-50%,-50%);
 		}
 
 		#start {
-			font-size:30px;
+			font-size:20px;
 		}
 
 		#blank {
-			height: 100px;
+			height: 80px;
 		}
 
 		span {
@@ -41,7 +40,16 @@
 
 		footer {
 			position : absolute;
-bottom : 0;
+			bottom : 0;
+			font-size:2px;
+		}
+
+		footer>img {
+			height:10px;
+		}
+
+		.btn{
+			border-radius : 0px;
 		}
 
 	</style>
@@ -51,19 +59,19 @@ bottom : 0;
 		<div class="row">
 			<h1 class="display-1">향수추천</h1>
 		</div>
-		<div class="row m-5">
-			<p1>당신 주변에 있는 향기들을 추천해드릴게요.</h1>
+		<div class="row m-3">
+			<p1>당신 주변에 있는 향기들을 추천해드릴게요.</p1>
 		</div>
 		<div id="blank"></div>
 		<div class="row">
 			<div class="col-sm"></div>
-			<button type="submit" id="start" class="col-sm-4 btn btn-light p-3 opacity-50"><span>진단하기</span></button>
+			<button type="submit" id="start" class="col-sm-4 btn btn-light opacity-50"><span>진단하기</span></button>
 			<div class="col-sm"></div>
 		</div>
 	</div>
 	<footer>
-		<img src="img/footer.png" class="opacity-70">
-		<span class="text-light opacity-70">본 저작물은 제주특별자치도에서 작성하여 공공누리 제1유형으로 개방한 제주서체 - 제주명조를 이용하였으며,
+		<img src="img/footer.png" class="opacity-50">
+		<span class="text-light opacity-50">본 저작물은 제주특별자치도에서 작성하여 공공누리 제1유형으로 개방한 제주서체 - 제주명조를 이용하였으며,
 			해당 저작물은 제주특별자치도 홈페이지에서 무료로 다운받으실 수 있습니다.</span>
 	</footer>
     <!-- Option 1: Bootstrap Bundle with Popper -->
