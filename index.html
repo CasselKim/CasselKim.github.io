@@ -32,16 +32,9 @@
 			-ms-transform: translate(-50%,-50%);
 		}
 
-		#start {
-			font-size:20px;
-		}
 
 		#blank {
 			height: 80px;
-		}
-
-		span {
-			opacity: 100%;
 		}
 
 		footer {
@@ -76,9 +69,29 @@
 			}
 		}
 
-		#recent {
-			opacity: 0;
+		input[type="text"] { 
+			border: none;
+			color:#fff;
 		}
+
+		input[type="text"]:focus {
+			border-bottom: solid 2px rgb(255,255,255);
+			box-shadow: none !important;
+			color:#fff;
+		}
+
+		.input-group {
+			border: none;
+			border-bottom: solid 2px rgb(255,255,255,0.5);
+			box-shadow: none !important;
+			border-radius: 0;
+			color:#fff;
+		}
+		
+		.section{
+			margin: 2rem auto;
+		}
+
 
 
 	</style>
@@ -94,25 +107,123 @@
 			</div>
 			<div id="blank"></div>
 			<div class="row">
-				<div class="col-sm"></div>
-					<button type="submit" id="start" class="col-sm-4 btn btn-light opacity-50" onclick="start()"><span>진단하기</span></button>
-				<div class="col-sm"></div>
+				<div class="col"></div>
+					<button type="submit" id="start" class="col-4 btn btn-light opacity-75" onclick="start()"><span>진단하기</span></button>
+				<div class="col"></div>
 			</div>
 		</div>
-		<div id="recent" display="none">
+		<div id="recent" style="opacity: 0; display:none">
 			<div class="row m-3">
 				<p1>1. 최근에 사용한 향수 3개를 골라주세요.</p1>
+				<i class="bi bi-search"></i>
 			</div>
 			<form>
-				<input type="text" class="form-control" id="recent-brand1" name="recent-brand1" aria-describedby="recent-brand1">
-				<div class="row">
-					<div class="col-sm"></div>
-						<button type="submit" id="recent_submit" class="col-sm-4 btn btn-light opacity-50"><span>진단하기</span></button>
-					<div class="col-sm"></div>
+				<div class="section">
+					<div class="row justify-content-center m-2">
+						<div class="col"></div>
+						<div class="col-auto">
+							<label for="recent-brand1" class="col-form-label">브랜드</label>
+						</div>
+						<div class="col-4 input-group w-50 p-0 mx-2">
+							<input type="text" class="form-control bg-transparent bg-opacity-75" id="recent-brand1" name="recent-brand1" aria-describedby="recent-brand1">
+							<button class="input-group-text bg-transparent bg-opacity-75 border-0" id="basic-addon1">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-search" viewBox="0 0 16 16">
+									<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+								</svg>
+							</button>					
+						</div>
+						<div class="col"></div>
+					</div>
+					<div class="row justify-content-center m-2">
+						<div class="col"></div>
+						<div class="col-auto">
+							<label for="recent-frag1" class="col-form-label">향　수</label>
+						</div>
+						<div class="col-4 input-group w-50 p-0 mx-2">
+							<input type="text" class="form-control bg-transparent bg-opacity-75" id="recent-frag1" name="recent-frag1" aria-describedby="recent-frag1">
+							<button class="input-group-text bg-transparent bg-opacity-75 border-0" id="basic-addon1">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-search" viewBox="0 0 16 16">
+									<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+								</svg>
+							</button>			
+						</div>
+						<div class="col"></div>
+					</div>
+				</div>
+				<div class="section">
+					<div class="row justify-content-center m-2">
+						<div class="col"></div>
+						<div class="col-auto">
+							<label for="recent-brand1" class="col-form-label">브랜드</label>
+						</div>
+						<div class="col-4 input-group w-50 p-0 mx-2">
+							<input type="text" class="form-control bg-transparent bg-opacity-75" id="recent-brand1" name="recent-brand1" aria-describedby="recent-brand1">
+							<button class="input-group-text bg-transparent bg-opacity-75 border-0" id="basic-addon1">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-search" viewBox="0 0 16 16">
+									<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+								</svg>
+							</button>					
+						</div>
+						<div class="col"></div>
+					</div>
+					<div class="row justify-content-center m-2">
+						<div class="col"></div>
+						<div class="col-auto">
+							<label for="recent-frag1" class="col-form-label">향　수</label>
+						</div>
+						<div class="col-4 input-group w-50 p-0 mx-2">
+							<input type="text" class="form-control bg-transparent bg-opacity-75" id="recent-frag1" name="recent-frag1" aria-describedby="recent-frag1">
+							<button class="input-group-text bg-transparent bg-opacity-75 border-0" id="basic-addon1">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-search" viewBox="0 0 16 16">
+									<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+								</svg>
+							</button>			
+						</div>
+						<div class="col"></div>
+					</div>
+				</div>
+				<div class="section">
+					<div class="row justify-content-center m-2">
+						<div class="col"></div>
+						<div class="col-auto">
+							<label for="recent-brand1" class="col-form-label">브랜드</label>
+						</div>
+						<div class="col-4 input-group w-50 p-0 mx-2">
+							<input type="text" class="form-control bg-transparent bg-opacity-75" id="recent-brand1" name="recent-brand1" aria-describedby="recent-brand1">
+							<button class="input-group-text bg-transparent bg-opacity-75 border-0" id="basic-addon1">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-search" viewBox="0 0 16 16">
+									<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+								</svg>
+							</button>					
+						</div>
+						<div class="col"></div>
+					</div>
+					<div class="row justify-content-center m-2">
+						<div class="col"></div>
+						<div class="col-auto">
+							<label for="recent-frag1" class="col-form-label">향　수</label>
+						</div>
+						<div class="col-4 input-group w-50 p-0 mx-2">
+							<input type="text" class="form-control bg-transparent bg-opacity-75" id="recent-frag1" name="recent-frag1" aria-describedby="recent-frag1">
+							<button class="input-group-text bg-transparent bg-opacity-75 border-0" id="basic-addon1">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-search" viewBox="0 0 16 16">
+									<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+								</svg>
+							</button>			
+						</div>
+						<div class="col"></div>
+					</div>
+				</div>
+				<div class="row mt-5">
+					<div class="col"></div>
+						<button type="submit" id="recent_submit" class="col-4 btn btn-light opacity-75"><span>진단하기</span></button>
+					<div class="col"></div>
 				</div>
 			</form>
 		</div>
 	</div>
+	
+	  
 	<footer>
 		<img src="img/footer.png" class="opacity-50">
 		<span class="text-light opacity-50">본 저작물은 제주특별자치도에서 작성하여 공공누리 제1유형으로 개방한 제주서체 - 제주명조를 이용하였으며,
