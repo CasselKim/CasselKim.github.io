@@ -1,24 +1,32 @@
 <!doctype html>
 <html lang="kr">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>향수 추천</title>
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+	<title>향수 추천</title>
 
 	<style>
-
 		@font-face {
-			font-family : "Jeju";
-			src : url("./font/JejuMyeongjo.woff") format('woff');
+			font-family: "Jeju";
+			src: url("./font/JejuMyeongjo.woff") format('woff');
+		}
+
+		*:focus {
+			box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
+			box-shadow: 0 0 0 3px activeborder; /* Blink, Chrome */ 
+			box-shadow: 0 0 0 3px -moz-mac-focusring; /* Firefox */
+			outline: auto 0 -webkit-focus-ring-color; /* Webkit, Safari */
 		}
 
 		body {
-			font-family: 'Jeju', sans-serif, Times, Arial ;
+			font-family: 'Jeju', sans-serif, Times, Arial;
 			background-image: url("img/background.jpg");
 			background-size: 100%;
 		}
@@ -28,8 +36,8 @@
 			top: 50%;
 			left: 50%;
 			color: white;
-			transform: translate(-50%,-50%);
-			-ms-transform: translate(-50%,-50%);
+			transform: translate(-50%, -50%);
+			-ms-transform: translate(-50%, -50%);
 		}
 
 
@@ -38,23 +46,24 @@
 		}
 
 		footer {
-			position : absolute;
-			bottom : 0;
-			font-size:2px;
+			position: absolute;
+			bottom: 0;
+			font-size: 2px;
 		}
 
 		footer>img {
-			height:10px;
+			height: 10px;
 		}
 
-		.btn{
-			border-radius : 0px;
-		}	
+		.btn {
+			border-radius: 0px;
+		}
 
 		@keyframes fadeout {
 			from {
 				opacity: 1;
 			}
+
 			to {
 				opacity: 0;
 			}
@@ -64,38 +73,92 @@
 			from {
 				opacity: 0;
 			}
+
 			to {
 				opacity: 1;
 			}
 		}
 
-		input[type="text"] { 
+		input[type="text"] {
 			border: none;
-			color:#fff;
+			color: #fff;
 		}
 
 		input[type="text"]:focus {
 			box-shadow: none !important;
-			color:#fff;
+			color: #fff;
 		}
 
-		.input-group {
-			border: none;
-			border-bottom: solid 2px rgb(255,255,255,0.5);
-			box-shadow: none !important;
-			border-radius: 0;
-			color:#fff;
-		}
-		
-		.section{
+
+		.section {
 			margin: 2rem auto;
 		}
 
 
+		input.search {
+			background-image: url('icon/search.svg');
+            background-position: right;
+            background-repeat: no-repeat;
+
+			width: 100%;
+			font-size: 16px;
+			padding: 10px;
+			border: none;
+			border-bottom: 1px solid #ddd;
+		}
+
+		div.options{
+			position: absolute;
+			width: 40%;
+			text-align: left;
+			overflow: hidden;
+
+		}
+
+		.dropdown-content option {
+			color:rgba(255,255,255,0.75);
+			background-color:rgba(0, 0, 0, 0.486);
+			padding: 5px 10px;
+			text-decoration: none;
+			display: none;
+			border: none;
+		}
+
+		.dropdown-content option:hover {
+			background-color:rgba(0, 0, 0, 0.8);
+			color: #fff;
+			display: block;
+			border: none;
+		}
+
+		.show {
+			display: block;
+		}
+
+		.z6{
+			z-index:6;
+		}
+		.z5{
+			z-index:5;
+		}
+		.z4{
+			z-index:4;
+		}
+		.z3{
+			z-index:3;
+		}
+		.z2{
+			z-index:2;
+		}
+		.z1{
+			z-index:1;
+		}
+
 
 	</style>
-  </head>
-  <body>
+</head>
+
+<body>
 	<div class="container text-center">
 		<div id="main">
 			<div class="row">
@@ -107,7 +170,8 @@
 			<div id="blank"></div>
 			<div class="row">
 				<div class="col"></div>
-					<button type="submit" id="start" class="col-4 btn btn-light opacity-75" onclick="start()"><span>진단하기</span></button>
+				<button type="submit" id="start" class="col-4 btn btn-light opacity-75"
+					onclick="start()"><span>진단하기</span></button>
 				<div class="col"></div>
 			</div>
 		</div>
@@ -123,13 +187,57 @@
 						<div class="col-auto">
 							<label for="recent-brand1" class="col-form-label">브랜드</label>
 						</div>
+						<div id="myDropdown" class="col-6 dropdown-content">
+							<div class="input-group">
+								<input type="text" class="search bg-transparent bg-opacity-75" placeholder="Search.."
+								id="recent-brand1" name="recent-brand1" aria-describedby="recent-brand1" autocomplete="off">
+								<button class="input-group-text bg-transparent bg-opacity-75 border-0" id="basic-addon1"></button>
+							</div>
+							<div class="options z6">
+								<option value="animation-name: border-focus">animation-name: border-focus</option>
+								<option value="animation-duration">animation-duration</option>
+								<option value="animation-fill-mode">animation-fill-mode</option>
+							</div>
+						</div>
+						<div class="col"></div>
+					</div>
+					<div class="row justify-content-center m-2" id="z5">
+						<div class="col"></div>
+						<div class="col-auto">
+							<label for="recent-frag1" class="col-form-label">향　수</label>
+						</div>
 						<div class="col-4 input-group w-50 p-0 mx-2">
-							<input type="text" class="form-control bg-transparent bg-opacity-75" id="recent-brand1" name="recent-brand1" aria-describedby="recent-brand1">
+							<input type="text" class="form-control bg-transparent bg-opacity-75" id="recent-frag1"
+								name="recent-frag1" aria-describedby="recent-frag1">
 							<button class="input-group-text bg-transparent bg-opacity-75 border-0" id="basic-addon1">
-								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-search" viewBox="0 0 16 16">
-									<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff"
+									class="bi bi-search" viewBox="0 0 16 16">
+									<path
+										d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z">
+									</path>
 								</svg>
-							</button>					
+							</button>
+						</div>
+						<div class="col"></div>
+					</div>
+				</div>
+				<div class="section">
+					<div class="row justify-content-center m-2" id="z4">
+						<div class="col"></div>
+						<div class="col-auto">
+							<label for="recent-brand1" class="col-form-label">브랜드</label>
+						</div>
+						<div class="col-4 input-group w-50 p-0 mx-2">
+							<input type="text" class="bg-transparent bg-opacity-75"   id="recent-brand1"
+								name="recent-brand1" aria-describedby="recent-brand1">
+							<button class="input-group-text bg-transparent bg-opacity-75 border-0" id="basic-addon1">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff"
+									class="bi bi-search" viewBox="0 0 16 16">
+									<path
+										d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z">
+									</path>
+								</svg>
+							</button>
 						</div>
 						<div class="col"></div>
 					</div>
@@ -139,12 +247,16 @@
 							<label for="recent-frag1" class="col-form-label">향　수</label>
 						</div>
 						<div class="col-4 input-group w-50 p-0 mx-2">
-							<input type="text" class="form-control bg-transparent bg-opacity-75" id="recent-frag1" name="recent-frag1" aria-describedby="recent-frag1">
+							<input type="text" class="form-control bg-transparent bg-opacity-75" id="recent-frag1"
+								name="recent-frag1" aria-describedby="recent-frag1">
 							<button class="input-group-text bg-transparent bg-opacity-75 border-0" id="basic-addon1">
-								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-search" viewBox="0 0 16 16">
-									<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff"
+									class="bi bi-search" viewBox="0 0 16 16">
+									<path
+										d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z">
+									</path>
 								</svg>
-							</button>			
+							</button>
 						</div>
 						<div class="col"></div>
 					</div>
@@ -156,12 +268,16 @@
 							<label for="recent-brand1" class="col-form-label">브랜드</label>
 						</div>
 						<div class="col-4 input-group w-50 p-0 mx-2">
-							<input type="text" class="form-control bg-transparent bg-opacity-75" id="recent-brand1" name="recent-brand1" aria-describedby="recent-brand1">
+							<input type="text" class="form-control bg-transparent bg-opacity-75" id="recent-brand1"
+								name="recent-brand1" aria-describedby="recent-brand1">
 							<button class="input-group-text bg-transparent bg-opacity-75 border-0" id="basic-addon1">
-								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-search" viewBox="0 0 16 16">
-									<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff"
+									class="bi bi-search" viewBox="0 0 16 16">
+									<path
+										d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z">
+									</path>
 								</svg>
-							</button>					
+							</button>
 						</div>
 						<div class="col"></div>
 					</div>
@@ -171,80 +287,74 @@
 							<label for="recent-frag1" class="col-form-label">향　수</label>
 						</div>
 						<div class="col-4 input-group w-50 p-0 mx-2">
-							<input type="text" class="form-control bg-transparent bg-opacity-75" id="recent-frag1" name="recent-frag1" aria-describedby="recent-frag1">
+							<input type="text" class="form-control bg-transparent bg-opacity-75" id="recent-frag1"
+								name="recent-frag1" aria-describedby="recent-frag1">
 							<button class="input-group-text bg-transparent bg-opacity-75 border-0" id="basic-addon1">
-								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-search" viewBox="0 0 16 16">
-									<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff"
+									class="bi bi-search" viewBox="0 0 16 16">
+									<path
+										d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z">
+									</path>
 								</svg>
-							</button>			
-						</div>
-						<div class="col"></div>
-					</div>
-				</div>
-				<div class="section">
-					<div class="row justify-content-center m-2">
-						<div class="col"></div>
-						<div class="col-auto">
-							<label for="recent-brand1" class="col-form-label">브랜드</label>
-						</div>
-						<div class="col-4 input-group w-50 p-0 mx-2">
-							<input type="text" class="form-control bg-transparent bg-opacity-75" id="recent-brand1" name="recent-brand1" aria-describedby="recent-brand1">
-							<button class="input-group-text bg-transparent bg-opacity-75 border-0" id="basic-addon1">
-								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-search" viewBox="0 0 16 16">
-									<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
-								</svg>
-							</button>					
-						</div>
-						<div class="col"></div>
-					</div>
-					<div class="row justify-content-center m-2">
-						<div class="col"></div>
-						<div class="col-auto">
-							<label for="recent-frag1" class="col-form-label">향　수</label>
-						</div>
-						<div class="col-4 input-group w-50 p-0 mx-2">
-							<input type="text" class="form-control bg-transparent bg-opacity-75" id="recent-frag1" name="recent-frag1" aria-describedby="recent-frag1">
-							<button class="input-group-text bg-transparent bg-opacity-75 border-0" id="basic-addon1">
-								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-search" viewBox="0 0 16 16">
-									<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
-								</svg>
-							</button>			
+							</button>
 						</div>
 						<div class="col"></div>
 					</div>
 				</div>
 				<div class="row mt-5">
 					<div class="col"></div>
-						<button type="submit" id="recent_submit" class="col-4 btn btn-light opacity-75"><span>진단하기</span></button>
+					<button type="submit" id="recent_submit"
+						class="col-4 btn btn-light opacity-75"><span>진단하기</span></button>
 					<div class="col"></div>
 				</div>
 			</form>
 		</div>
 	</div>
-	
-	  
+
+
 	<footer>
 		<img src="img/footer.png" class="opacity-50">
 		<span class="text-light opacity-50">본 저작물은 제주특별자치도에서 작성하여 공공누리 제1유형으로 개방한 제주서체 - 제주명조를 이용하였으며,
 			해당 저작물은 제주특별자치도 홈페이지에서 무료로 다운받으실 수 있습니다.</span>
 	</footer>
 
-	
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-	
+
+	<!-- Option 1: Bootstrap Bundle with Popper -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+		crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
 	<script>
 		function start() {
 			document.getElementById("main").style = "animation : fadeout 0.5s; animation-fill-mode: forwards;";
 
-			var myTimer = setTimeout(function() {
-				document.getElementById("main").style="display:none;";
-				document.getElementById("recent").style="display:block;";
-				document.getElementById("recent").style ="animation : fadein 0.5s;";
+			var myTimer = setTimeout(function () {
+				document.getElementById("main").style = "display:none;";
+				document.getElementById("recent").style = "display:block;";
+				document.getElementById("recent").style = "animation : fadein 0.5s;";
 			}, 500);
 		}
-
-
 	</script>
-  </body>
+	<script>
+		$("input.search").on('focus keyup',function (){
+			var filter = $(this).val().toUpperCase();
+			$('option').each(function () {
+				txtValue = $(this).text() || $(this).html();
+				if (txtValue.toUpperCase().indexOf(filter) > -1 && filter.length > 0) {
+					$(this).css('display', 'block');
+				} else {
+					$(this).css('display', 'none');
+				}
+			});
+		})
+
+		$("option").click(function () {
+			$(this).parent("div").prev("div").children("input").val(this.value);
+			
+			$("option").css('display', 'none');
+		});
+	</script>
+</body>
+
 </html>
