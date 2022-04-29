@@ -154,6 +154,10 @@
 			z-index:1;
 		}
 
+		.img-thumbnail{
+			width:70%;
+		}
+
 
 	</style>
 </head>
@@ -179,7 +183,7 @@
 				<p1>1. 최근에 사용한 향수 3개를 골라주세요.</p1>
 				<i class="bi bi-search"></i>
 			</div>
-			<form>
+			
 				<div class="section">
 					<div class="row justify-content-center m-2">
 						<div class="col"></div>
@@ -272,12 +276,12 @@
 					<div class="row justify-content-center m-2">
 						<div class="col"></div>
 						<div class="col-auto">
-							<label for="recent-brand2" class="col-form-label">브랜드</label>
+							<label for="recent-brand3" class="col-form-label">브랜드</label>
 						</div>
 						<div id="myDropdown" class="col-6 dropdown-content">
 							<div class="input-group">
 								<input type="text" class="search bg-transparent bg-opacity-75" placeholder="Search.."
-								id="recent-brand2" name="recent-brand2" aria-describedby="recent-brand2" autocomplete="off">
+								id="recent-brand3" name="recent-brand3" aria-describedby="recent-brand3" autocomplete="off">
 							</div>
 							<div class="options z2">
 								<option value="Histoires de Parfums">Histoires de Parfums</option>
@@ -314,11 +318,51 @@
 				</div>
 				<div class="row mt-5">
 					<div class="col"></div>
-					<button type="submit" id="recent_submit"
+					<button type="submit" id="recent-submit"
 						class="col-4 btn btn-light opacity-75"><span>진단하기</span></button>
 					<div class="col"></div>
 				</div>
-			</form>
+			
+		</div>
+		<div id="result" style="display:none">
+			<div class="row">
+				<h1 class="display-1">추천 결과</h1>
+			</div>
+			<div class="row m-3">
+				<p1>당신이 좋아하는 향을 분석한 결과예요.</p1>
+			</div>
+			<div class="row">
+				<div class="col">
+					<img src="img/EbonyWoodZara.webp" class="img-thumbnail" alt="...">
+					<p>Ebony Wood Zara</p>
+					<p>warm spicy</p>
+					<p>woody</p>
+					<p>soft spicy</p>
+				</div>
+				<div class="col">
+					<img src="img/BurberryHerBurberry.webp" class="img-thumbnail" alt="...">
+					<p>Burberry Her Burberry</p>
+					<p>fruity</p>
+					<p>sweet</p>
+					<p>musky</p>
+					<p>powdery</p>
+				</div>
+				<div class="col">
+					<img src="img/VanilleAbsoluMontale.webp" class="img-thumbnail" alt="...">
+					<p>Vanille Absolu Montale</p>
+					<p>vanilla</p>
+					<p>warm spicy</p>
+					<p>cinnamon</p>
+					<p>powdery</p>
+					<p>woody</p>
+					<p>sweet</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col"></div>
+				<button type="submit" id="start" class="col-4 btn btn-light opacity-75"><span>진단하기</span></button>
+				<div class="col"></div>
+			</div>
 		</div>
 	</div>
 
@@ -352,6 +396,20 @@
 					.css("animation","fadein 0.5s");
 			}, 500);
 		});
+
+		$("#recent-submit").click(function(){
+			$("#recent")
+				.css("animation","fadeout 0.5s")
+				.css("animation-fill-mode","forwards");
+			
+			var myTimer = setTimeout(function () {
+				$("#recent").css("display","none");
+				$("#result")
+					.css("display","block")
+					.css("animation","fadein 0.5s");
+			}, 500);
+		});
+
 	</script>
 	<script>
 		$("input.search").on('focus keyup',function (){
