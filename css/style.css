@@ -1,0 +1,149 @@
+@font-face {
+    font-family: "Jeju";
+    src: url("../font/JejuMyeongjo.woff") format('woff');
+}
+
+*:focus {
+    box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
+    box-shadow: 0 0 0 3px activeborder; /* Blink, Chrome */ 
+    box-shadow: 0 0 0 3px -moz-mac-focusring; /* Firefox */
+    outline: auto 0 -webkit-focus-ring-color; /* Webkit, Safari */
+}
+
+body {
+    font-family: 'Jeju', sans-serif, Times, Arial;
+    background-image: url("../img/background.jpg");
+    background-size: 100%;
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: white;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+
+
+#blank {
+    height: 80px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    font-size: 2px;
+}
+
+footer>img {
+    height: 10px;
+}
+
+.btn {
+    border-radius: 0px;
+}
+
+@keyframes fadeout {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+input[type="text"] {
+    border: none;
+    color: #fff;
+}
+
+input[type="text"]:focus {
+    box-shadow: none !important;
+    color: #fff;
+}
+
+
+.section {
+    margin: 2rem auto;
+}
+
+
+input.search {
+    background-image: url('../icon/search.svg');
+    background-position: right;
+    background-repeat: no-repeat;
+
+    width: 100%;
+    font-size: 16px;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+}
+
+div.options{
+    position: absolute;
+    width: 40%;
+    text-align: left;
+    overflow: hidden;
+
+}
+
+.dropdown-content option {
+    color:rgba(255,255,255,0.75);
+    background-color:rgba(0, 0, 0, 0.8);
+    padding: 5px 10px;
+    text-decoration: none;
+    display: none;
+    border: none;
+}
+
+.dropdown-content option:hover {
+    background-color:rgba(0, 0, 0, 0.9);
+    color: #fff;
+    display: block;
+    border: none;
+}
+
+.show {
+    display: block;
+}
+
+.z6{
+    z-index:6;
+}
+.z5{
+    z-index:5;
+}
+.z4{
+    z-index:4;
+}
+.z3{
+    z-index:3;
+}
+.z2{
+    z-index:2;
+}
+.z1{
+    z-index:1;
+}
+
+.img-thumbnail{
+    width:70%;
+    max-width:200px;
+}
+
+p.frag_name{
+    font:16px;
+}
