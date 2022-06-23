@@ -44,7 +44,7 @@
 			</div>
 			<div class="row">
 				<div class="col"></div>
-				<button type="submit" id="restart" class="col-4 btn btn-light opacity-75"><span>다시하기</span></button>
+				<a href="/" id="restart" class="col-4 btn btn-light opacity-75"><span>다시하기</span></a>
 				<div class="col"></div>
 			</div>
 		</div>
@@ -62,61 +62,6 @@
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 		crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-
-	<script>
-		function sleep(ms) {
-			return new Promise((r) => setTimeout(r, ms));
-		}
-
-		$("#start").click(function(){
-			$("#main")
-				.css("animation","fadeout 0.5s")
-				.css("animation-fill-mode","forwards");
-			
-			var myTimer = setTimeout(function () {
-				$("#main").css("display","none");
-				$("#recent")
-					.css("display","block")
-					.css("animation","fadein 0.5s");
-			}, 500);
-		});
-
-		$("#recent-submit").click(function(){
-			$("#recent")
-				.css("animation","fadeout 0.5s")
-				.css("animation-fill-mode","forwards");
-			
-			var myTimer = setTimeout(function () {
-				$("#recent").css("display","none");
-				$("#result")
-					.css("display","block")
-					.css("animation","fadein 0.5s");
-			}, 500);
-		});
-
-		$('#restart').click(function() {
-			location.reload();
-		});
-
-	</script>
-	<script>
-		$("input.search").on('focus keyup',function (){
-			var filter = $(this).val().toUpperCase();
-			$(this).parent("div").next("div").children("option").each(function () {
-				txtValue = $(this).text() || $(this).html();
-				if (txtValue.toUpperCase().indexOf(filter) > -1 && filter.length > 0) {
-					$(this).css('display', 'block');
-				} else {
-					$(this).css('display', 'none');
-				}
-			});
-		})
-
-		$("option").click(function () {
-			$(this).parent("div").prev("div").children("input").val(this.value);
-			$("option").css('display', 'none');
-		});
-	</script>
 </body>
 
 </html>
