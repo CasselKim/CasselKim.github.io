@@ -1,18 +1,20 @@
-var express = require('express');
-var app = express();
+const express = require('express');
+const path = require('path')
+const app = new express();
+const ejs = require('ejs')
+app.set('view sample','ejs');
 
 app.use(express.static('public'))
 
 app.get('/',function(req,res){
-    res.send('Hello Wordl!');
+    res.render('index');
 })
 
-app.get('/about',function(req,res){
-    res.json({
-        name : 'Greg Lim'
-    });
+app.get('/recent',function(req,res){
+    res.render('recent');
 })
 
-app.listen(3000, function(){
-    console.log("App listening on port 3000...")
+
+app.listen(4000, ()=>{
+    console.log("App listening on port 4000...")
 })
