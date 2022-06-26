@@ -28,6 +28,10 @@ app.get('/recent',(req,res)=>{
     res.render('recent');
 })
 
+app.get('/result',(req,res)=>{
+    res.render('result');
+})
+
 let port = process.env.PORT;
 if (port==null || port==""){
     port=4000;
