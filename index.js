@@ -5,6 +5,7 @@ const ejs = require('ejs')
 const http = require('http');
 const querystring = require('querystring');
 
+const DDBController = require('./controllers/Query')
 app.set('view engine','ejs');
 
 app.use(express.static('public'))
@@ -16,6 +17,8 @@ app.get('/',(req,res)=>{
 app.get('/recent',(req,res)=>{
     res.render('recent');
 })
+
+app.post('/recommend',DDBController)
 
 app.get('/result',(req,res)=>{
     res.render('result');
